@@ -82,7 +82,7 @@
      <x>0</x>
      <y>0</y>
      <width>798</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="File">
@@ -100,8 +100,16 @@
      <string>Edit</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout_Noted"/>
+    <addaction name="actionLicense"/>
+   </widget>
    <addaction name="File"/>
    <addaction name="Edit"/>
+   <addaction name="menuHelp"/>
   </widget>
   <action name="actionNew">
    <property name="icon">
@@ -144,6 +152,16 @@
    </property>
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionAbout_Noted">
+   <property name="text">
+    <string>About Noted.</string>
+   </property>
+  </action>
+  <action name="actionLicense">
+   <property name="text">
+    <string>License</string>
    </property>
   </action>
  </widget>

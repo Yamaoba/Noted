@@ -42,7 +42,7 @@
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap>icon200.png</pixmap>
+         <pixmap>icon250.png</pixmap>
         </property>
         <property name="alignment">
          <set>Qt::AlignmentFlag::AlignBottom|Qt::AlignmentFlag::AlignHCenter</set>
