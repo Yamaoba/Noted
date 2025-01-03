@@ -16,29 +16,59 @@ class MainWindow(QMainWindow, Ui_FrontPage):
         
         # Initialize the Write window, but don't show it yet
         self.WriteGUI = MainWrite(self)
+        self.AboutGUI = MainAbout(self)
 
         # Connect the buttons to their respective methods
-        self.About.clicked.connect(self.gotoAbout)
+        self.About.clicked.connect(self.AboutGUI.gotoAbout)
         self.New.clicked.connect(self.WriteGUI.gotoWrite)
         self.Open.clicked.connect(self.WriteGUI.gotoOpen)
 
-    def gotoAbout(self):
-        # Set up and show the About window
-        self.AboutWindow = QWidget()
-        self.AboutUi = Ui_Form()
-        self.AboutUi.setupUi(self.AboutWindow)
-        self.AboutWindow.show()
+class MainAbout(QWidget, Ui_Form):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setupUi(self)  # Setup the UI for the About window
+        
+        # This flag will help in checking whether the About window is already open
+        self.is_open = False
 
+    def gotoAbout(self):
+        if not self.is_open:
+            self.AboutWindow = QWidget()
+            self.AboutUi = Ui_Form()
+            self.AboutUi.setupUi(self.AboutWindow)
+            self.AboutWindow.show()
+            self.is_open = True
+        else:
+            # If the About window is already open, bring it to the front
+            self.AboutWindow.raise_()
+            self.AboutWindow.activateWindow()
 
 class MainWrite(QMainWindow, Ui_Write):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setupUi(self)  # Set up the UI for the Write window
-
+        self.setupUi(self) # Set up the UI for the Write window
+        
+        self.AboutGUI = None
+        
         # Now that the UI is set up, connect the "Open" action to the method
         self.Open.triggered.connect(self.OpenFileDialog)
         self.actionSave.triggered.connect(self.SaveFileDialog)
         self.actionSave_As.triggered.connect(self.SaveAsFileDialog)
+        self.actionAbout.triggered.connect(self.showAboutWindow)
+
+    def showAboutWindow(self):
+        # Create the About window only when the action is triggered
+        if self.AboutGUI is None:
+            self.AboutGUI = MainAbout(self)  # Create only once when needed
+        self.AboutGUI.gotoAbout()
+
+    def gotoLicense(self):
+        # Show the Write window when the Write button is clicked
+        f = open(os.getcwd() + "/LICENSE", 'r')
+        file_content = f.read()
+        self.plainTextEdit.setPlainText(file_content)
+        self.plainTextEdit.setReadOnly(True)
+        self.setWindowTitle("LICENSE - Noted.")
 
     def gotoWrite(self):
         # Show the Write window when the Write button is clicked
@@ -68,6 +98,7 @@ class MainWrite(QMainWindow, Ui_Write):
                     self.setWindowTitle(name_title + " - Noted.")
                     self.actionSave.setEnabled(True)
                     print(os.getcwd())
+                    print(selected_files)
              
     def SaveFileDialog(self):
         f = open(selected_files[0], 'x')

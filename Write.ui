@@ -104,7 +104,7 @@
     <property name="title">
      <string>Help</string>
     </property>
-    <addaction name="actionAbout_Noted"/>
+    <addaction name="actionAbout"/>
     <addaction name="actionLicense"/>
    </widget>
    <addaction name="File"/>
@@ -154,7 +154,7 @@
     <string>Exit</string>
    </property>
   </action>
-  <action name="actionAbout_Noted">
+  <action name="actionAbout">
    <property name="text">
     <string>About Noted.</string>
    </property>

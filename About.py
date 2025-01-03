@@ -12,41 +12,28 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(645, 423)
-        Form.setWindowTitle("Noted. - About")
+        Form.resize(700, 700)
+        Form.setMinimumSize(QtCore.QSize(700, 700))
+        Form.setMaximumSize(QtCore.QSize(700, 700))
+        Form.setWindowTitle("About Noted.")
         self.gridLayout = QtWidgets.QGridLayout(Form)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setSpacing(0)
         self.gridLayout.setObjectName("gridLayout")
         self.verticalLayout = QtWidgets.QVBoxLayout()
-        self.verticalLayout.setContentsMargins(-1, 30, -1, -1)
+        self.verticalLayout.setContentsMargins(-1, 0, -1, -1)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.TitleIcon = QtWidgets.QLabel(parent=Form)
-        self.TitleIcon.setMinimumSize(QtCore.QSize(200, 200))
-        self.TitleIcon.setText("")
-        self.TitleIcon.setPixmap(QtGui.QPixmap("icon200.png"))
-        self.TitleIcon.setAlignment(QtCore.Qt.AlignmentFlag.AlignBottom|QtCore.Qt.AlignmentFlag.AlignHCenter)
-        self.TitleIcon.setObjectName("TitleIcon")
-        self.verticalLayout.addWidget(self.TitleIcon)
-        self.Title = QtWidgets.QLabel(parent=Form)
+        self.textEdit = QtWidgets.QTextEdit(parent=Form)
         font = QtGui.QFont()
         font.setFamily("Roboto")
-        font.setPointSize(36)
-        font.setBold(True)
-        self.Title.setFont(font)
-        self.Title.setAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
-        self.Title.setObjectName("Title")
-        self.verticalLayout.addWidget(self.Title)
-        self.Desc = QtWidgets.QLabel(parent=Form)
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(12)
-        self.Desc.setFont(font)
-        self.Desc.setAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignTop)
-        self.Desc.setObjectName("Desc")
-        self.verticalLayout.addWidget(self.Desc)
-        self.label = QtWidgets.QLabel(parent=Form)
-        self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.label.setObjectName("label")
-        self.verticalLayout.addWidget(self.label)
+        font.setBold(False)
+        self.textEdit.setFont(font)
+        self.textEdit.setAcceptDrops(False)
+        self.textEdit.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.textEdit.setUndoRedoEnabled(False)
+        self.textEdit.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.LinksAccessibleByKeyboard|QtCore.Qt.TextInteractionFlag.LinksAccessibleByMouse|QtCore.Qt.TextInteractionFlag.TextBrowserInteraction|QtCore.Qt.TextInteractionFlag.TextSelectableByKeyboard|QtCore.Qt.TextInteractionFlag.TextSelectableByMouse)
+        self.textEdit.setObjectName("textEdit")
+        self.verticalLayout.addWidget(self.textEdit)
         self.gridLayout.addLayout(self.verticalLayout, 0, 0, 1, 1)
 
         self.retranslateUi(Form)
@@ -54,6 +41,23 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        self.Title.setText(_translate("Form", "Noted."))
-        self.Desc.setText(_translate("Form", "Write down your note here!."))
-        self.label.setText(_translate("Form", "This App is created by Yamaoba. With License of GNU SIGMA IDK WHAT I NEED TO WRITE"))
+        self.textEdit.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:\'Roboto\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\"icon/icon250.png\" /></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:28pt; font-weight:700;\">NOTED.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Sans Serif\';\">Write down your note here!.<br /></span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'Sans Serif\';\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Sans Serif\';\">(built on or after 01 Jan 2025)</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Sans Serif\';\">Using PyQt v6.8.0 and Python v3.1.13.1</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><a href=\"https://github.com/Yamaoba/Noted\"><span style=\" font-family:\'Sans Serif\'; text-decoration: underline; color:#0057ae;\">https://github.com/Yamaoba/Noted</span></a></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Logo Designed by Freepik (<a href=\"http://www.freepik.com/\"><span style=\" text-decoration: underline; color:#0057ae;\">www.freepik.com</span></a>)</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">        </p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Sans Serif\';\">Copyright (c) 2025</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Sans Serif\';\">With MIT </span><a href=\"https://github.com/Yamaoba/Noted/blob/main/LICENSE\"><span style=\" text-decoration: underline; color:#0057ae;\">License</span></a></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Sans Serif\'; font-weight:700;\">Yamaoba</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'Sans Serif\'; font-weight:700;\"><br /></p></body></html>"))
