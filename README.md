@@ -1,7 +1,7 @@
 
 <br/>
 <div align="center">
-<a href="https://github.com/ShaanCoding/ReadME-Generator">
+<a href="https://github.com/Yamaoba/Noted">
 <img src="https://raw.githubusercontent.com/Yamaoba/Noted/refs/heads/main/icon/icon250.png" alt="Logo" width="80" height="80">
 </a>
 <h3 align="center">Noted.</h3>
