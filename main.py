@@ -3,9 +3,9 @@ import os
 
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QFileDialog
 
-from Write import Ui_Write
-from FrontPage import Ui_FrontPage
-from About import Ui_Form
+from Pkg.Write import Ui_Write
+from Pkg.FrontPage import Ui_FrontPage
+from Pkg.About import Ui_Form
 
 class MainWindow(QMainWindow, Ui_FrontPage):
     def __init__(self, parent=None):

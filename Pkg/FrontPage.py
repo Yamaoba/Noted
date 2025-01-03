@@ -28,7 +28,7 @@ class Ui_FrontPage(object):
         self.TitleIcon = QtWidgets.QLabel(parent=self.centralwidget)
         self.TitleIcon.setMinimumSize(QtCore.QSize(200, 200))
         self.TitleIcon.setText("")
-        self.TitleIcon.setPixmap(QtGui.QPixmap("image/icon250.png"))
+        self.TitleIcon.setPixmap(QtGui.QPixmap("icon/icon250.png"))
         self.TitleIcon.setAlignment(QtCore.Qt.AlignmentFlag.AlignBottom|QtCore.Qt.AlignmentFlag.AlignHCenter)
         self.TitleIcon.setObjectName("TitleIcon")
         self.verticalLayout.addWidget(self.TitleIcon)
