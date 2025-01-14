@@ -20,7 +20,7 @@ class MainWindow(QMainWindow, Ui_FrontPage):
 
         # Connect the buttons to their respective methods
         self.About.clicked.connect(self.AboutGUI.gotoAbout)
-        self.New.clicked.connect(self.WriteGUI.gotoWrite)
+        self.New.clicked.connect(self.WriteGUI.gotoNew)
         self.Open.clicked.connect(self.WriteGUI.gotoOpen)
 
 class MainAbout(QWidget, Ui_Form):
@@ -50,11 +50,18 @@ class MainWrite(QMainWindow, Ui_Write):
         
         self.AboutGUI = None
         
-        # Now that the UI is set up, connect the "Open" action to the method
-        self.Open.triggered.connect(self.OpenFileDialog)
+        self.actionNew.triggered.connect(self.gotoNew)
+        self.actionOpen.triggered.connect(self.OpenFileDialog)
         self.actionSave.triggered.connect(self.SaveFileDialog)
         self.actionSave_As.triggered.connect(self.SaveAsFileDialog)
+
+        #Edit
+
+        self.actionWrap_Lines.toggled.connect(self.warpLine)
+
+        #Help
         self.actionAbout.triggered.connect(self.showAboutWindow)
+        self.actionLicense.triggered.connect(self.gotoLicense)
 
     def showAboutWindow(self):
         # Create the About window only when the action is triggered
@@ -64,20 +71,27 @@ class MainWrite(QMainWindow, Ui_Write):
 
     def gotoLicense(self):
         # Show the Write window when the Write button is clicked
-        f = open(os.getcwd() + "/LICENSE", 'r')
+        f = open(os.getcwd() + "/LICENSE.md", 'r')
         file_content = f.read()
         self.plainTextEdit.setPlainText(file_content)
         self.plainTextEdit.setReadOnly(True)
         self.setWindowTitle("LICENSE - Noted.")
-
-    def gotoWrite(self):
+                
+    def gotoNew(self):
         # Show the Write window when the Write button is clicked
-        self.show()  # Show the MainWrite window
+        self.write_window = MainWrite(self)
+        self.write_window.show()  # Show the MainWrite window
 
     def gotoOpen(self):
         # Show the Write window when the Write button is clicked
         self.show()
         self.OpenFileDialog()
+
+    def warpLine(self):
+        if self.actionWrap_Lines.isChecked() == True:
+            self.plainTextEdit.setLineWrapMode() == 1
+        else:
+            self.plainTextEdit.setLineWrapMode() == 0
 
     def OpenFileDialog(self):
         # Create a file dialog and configure it
@@ -97,6 +111,7 @@ class MainWrite(QMainWindow, Ui_Write):
                     self.plainTextEdit.setPlainText(file_content)
                     self.setWindowTitle(name_title + " - Noted.")
                     self.actionSave.setEnabled(True)
+                    self.plainTextEdit.setReadOnly(False)
                     print(os.getcwd())
                     print(selected_files)
              
